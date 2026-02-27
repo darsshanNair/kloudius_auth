@@ -64,6 +64,7 @@ export const useUser = () => {
 
   const logout = async (): Promise<void> => {
     await _resetUser();
+
     return AuthService.logout();
   };
 
@@ -86,13 +87,16 @@ export const useUser = () => {
           const validUser = await AuthService.login(email, password);
           if (validUser) {
             context.setUser(validUser);
+
             return validUser;
           }
         }
       }
+
       return null;
     } catch (error) {
       console.error('Error checking stored credentials:', error);
+
       return null;
     }
   };

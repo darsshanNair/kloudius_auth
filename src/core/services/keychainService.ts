@@ -10,6 +10,7 @@ const saveCredentials = async (
 
 const getCredentials = async (name: string) => {
   const credentials = await Keychain.getGenericPassword({ service: name });
+
   return credentials;
 };
 
