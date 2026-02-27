@@ -34,7 +34,6 @@ export const LoginScreen: React.FC = () => {
 
   const handleLogin = async () => {
     try {
-      // Validate inputs
       await loginSchema.validate({ email, password }, { abortEarly: false });
       setErrors({});
 
@@ -42,9 +41,7 @@ export const LoginScreen: React.FC = () => {
 
       const user = await login(email, password);
 
-      if (user) {
-        // Navigation is handled by AppNavigator based on user state
-      } else {
+      if (!user) {
         Alert.alert(
           'Login Failed',
           'Invalid email or password. Please check your credentials and try again.'
